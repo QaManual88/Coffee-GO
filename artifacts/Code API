@@ -1,0 +1,24 @@
+1. Створення замовлення
+POST /api/orders
+Request:
+{
+  "user_id": 123,
+  "cafe_id": 45,
+  "items": [
+    {"product_id": 10, "quantity": 1},
+    {"product_id": 12, "quantity": 2}
+  ],
+  "payment_method": "card"
+}
+
+Response (201 Created):
+{
+  "order_id": 789,
+  "status": "pending",
+  "estimated_time": "5 min"
+}
+
+Errors:
+400 - invalid request
+402 - payment failed
+404 - cafe not found
