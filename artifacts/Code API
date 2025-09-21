@@ -22,3 +22,39 @@ Errors:
 400 - invalid request
 402 - payment failed
 404 - cafe not found
+
+2) Отримання списка замовлень 
+GET /api/barista/orders?status=new
+Response (200 OK):
+[
+  {
+    "order_id": 789,
+    "user_name": "Іван",
+    "items": ["Latte x1", "Espresso x2"],
+    "status": "new"
+  }
+]
+
+Errors:
+401 - unauthorized
+403 - forbidden (не бариста)
+
+3. Оновлення статусу замовлення
+PATCH /api/orders/{order_id}/status
+Request:
+{
+  "status": "ready"
+}
+
+Response (200 OK):
+{
+  "order_id": 789,
+  "status": "ready"
+}
+
+Errors:
+400 - invalid status
+401 - unauthorized
+404 - order not found
+
+
